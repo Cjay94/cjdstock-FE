@@ -80,7 +80,7 @@ const CardExpenseSummary = () => {
                             </div>
                         </div>
                         {/* LABELS */}
-                        <ul className="flex flex-col justify-around items-center xl:items-start py-5 gap-3">
+                        <ul className="flex flex-col justify-around items-center xl:items-start py-5 gap-3 flex-1">
                             {expenseCategories.map((entry, idx) => (
                                 <li
                                     key={`legend-${idx}`}
