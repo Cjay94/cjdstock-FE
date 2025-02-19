@@ -30,7 +30,7 @@ const Inventory = () => {
 
     return (
         <div className="flex flex-col">
-            <Header name="Inventory" />
+            <Header title="Inventory" />
             <DataGrid
                 getRowId={(row) => row.productId}
                 rows={products}

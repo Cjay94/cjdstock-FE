@@ -10,6 +10,7 @@ const Rating = ({ rating }: RatingProps) => {
         <Star
             key={index}
             color={index <= rating ? "#FFC107" : "#EAE5F9"}
+            fill={index <= rating ? "#FFC107" : "#EAE5F9"}
             className='w-4 h-4'
         />
     ))
