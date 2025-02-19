@@ -1,15 +1,30 @@
 "use client";
 
-import { useGetProductsQuery } from '@/state/api';
+import { useCreateProductMutation, useGetProductsQuery } from '@/state/api';
 import { PlusCircleIcon, Search } from 'lucide-react';
 import React, { useState } from 'react'
 import Header from '../(components)/Header';
 import Rating from '../(components)/Rating';
 import Image from 'next/image';
+import CreateProductModal from './CreateProductModal';
+
+type ProductFormData = {
+    name: string;
+    price: number;
+    stockQuantity: number;
+    rating: number;
+};
 
 const Products = () => {
     const [searchTerm, setSearchTerm] = useState("");
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const { data: products, isLoading, isError } = useGetProductsQuery(searchTerm);
+
+    const [createProduct] = useCreateProductMutation();
+    const handleCreateProduct = async (productData: ProductFormData) => {
+        await createProduct(productData);
+    }
 
     if (isLoading) {
         return <div className="py-4">Loading...</div>;
@@ -44,6 +59,7 @@ const Products = () => {
                 <Header title='Products' />
                 <button
                     className='flex items-center bg-blue-500 hover:bg-blue-700 text-gray-200 font-bold py-2 px-4 rounded'
+                    onClick={() => setIsModalOpen(true)}
                 >
                     <PlusCircleIcon
                         className='size-5 mr-2 !text-grey-200'
@@ -88,6 +104,11 @@ const Products = () => {
             </div>
 
             {/* MODAL */}
+            <CreateProductModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                onCreate={handleCreateProduct}
+            />
         </div>
     )
 }
