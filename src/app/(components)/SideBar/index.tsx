@@ -117,19 +117,18 @@ const SideBar = () => {
                isCollapsed={isSidebarCollapsed}
             />
             <SidebarLink
-               href="/settings"
-               icon={SlidersHorizontal}
-               label="Settings"
-               isCollapsed={isSidebarCollapsed}
-            />
-            <SidebarLink
                href="/expenses"
                icon={CircleDollarSign}
                label="Expenses"
                isCollapsed={isSidebarCollapsed}
             />
+            <SidebarLink
+               href="/settings"
+               icon={SlidersHorizontal}
+               label="Settings"
+               isCollapsed={isSidebarCollapsed}
+            />
          </div>
-
 
          {/* SIDEBAR FOOTER */}
          <div className={`${isSidebarCollapsed ? "hidden" : "block"} mb-10`}>
